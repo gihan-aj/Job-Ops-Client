@@ -10,6 +10,7 @@ import { AccountService } from '../account.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({});
   submitted: boolean = false;
+  loading: boolean = false;
   errorMessages: string[] = [];
 
   constructor(
@@ -43,7 +44,7 @@ export class RegisterComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern('^w+[w-.]*@w+((-w+)|(w*)).[a-z]{2,3}$'),
+          Validators.pattern('^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$'),
         ],
       ],
       password: [
@@ -59,12 +60,14 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.submitted = true;
+    this.loading = true;
     this.errorMessages = [];
 
     if (this.registerForm.valid) {
       this.accountService.register(this.registerForm.value).subscribe({
         next: (response: unknown) => {
           console.log(response);
+          this.loading = false;
         },
         error: (error) => {
           if (error.error.errors) {
@@ -74,8 +77,12 @@ export class RegisterComponent implements OnInit {
           } else {
             this.errorMessages.push('Internal server error.');
           }
+
+          this.loading = false;
         },
       });
+    } else {
+      this.loading = false;
     }
   }
 }

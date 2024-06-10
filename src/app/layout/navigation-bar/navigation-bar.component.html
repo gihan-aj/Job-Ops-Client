@@ -22,6 +22,8 @@
     >
       <li class="pr-2">
         <button
+          title="Dashboard"
+          label="Dashboard"
           pButton
           pRipple
           routerLink="/"
@@ -30,11 +32,12 @@
           class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center border-round"
         >
           <i class="pi pi-home mr-2"></i>
-          <span>Dashboard</span>
         </button>
       </li>
       <li class="pr-2" *ngFor="let item of menuItems">
         <button
+          title="{{ item.label }}"
+          label="{{ item.label }}"
           pButton
           pRipple
           routerLink="{{ item.routerLink }}"
@@ -42,7 +45,6 @@
           class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center border-round"
         >
           <i class="{{ item.icon }} mr-2"></i>
-          <span>{{ item.label }}</span>
         </button>
       </li>
     </ul>
@@ -52,6 +54,8 @@
     >
       <li class="pr-2">
         <button
+          title="Sign Up"
+          label="Sign Up"
           pButton
           pRipple
           routerLink="/account/register"
@@ -59,19 +63,19 @@
           class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center border-round"
         >
           <i class="pi pi-plus mr-2"></i>
-          <span>Sign Up</span>
         </button>
       </li>
       <li class="pr-2">
         <button
+          title="Sign In"
           pButton
+          label="Sign In"
           pRipple
           routerLink="/account/login"
           routerLinkActive="active"
           class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center border-round"
         >
           <i class="pi pi-user mr-2"></i>
-          <span>Sign In</span>
         </button>
       </li>
     </ul>

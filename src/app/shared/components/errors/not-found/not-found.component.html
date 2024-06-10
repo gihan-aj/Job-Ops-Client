@@ -1,6 +1,24 @@
-<div class="text-center mt-4 mb-4">
+<!-- <div class="text-center">
   <h2 class="mb-3 text-primary">Not Found!</h2>
   <p-divider />
   <p class="mt-4">We didn't found what you are looking for...</p>
   <a routerLink="/">Go back to home page</a>
+</div> -->
+
+<div class="px-4 py-8 md:px-6 lg:px-8">
+  <div class="text-center">
+    <span class="material-icons title-case-danger mb-3"> block </span>
+    <div class="text-primary font-bold text-5xl mb-3">Not Found!</div>
+    <div class="text-700 text-2xl mb-5">
+      We didn't found what you are looking for...
+    </div>
+    <button
+      title="Home"
+      pButton
+      pRipple
+      label=" Go to Home Page"
+      routerLink="/"
+      class="font-bold px-5 py-3 p-button-rounded white-space-nowrap"
+    ></button>
+  </div>
 </div>

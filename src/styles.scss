@@ -1,9 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeng/resources/themes/lara-light-blue/theme.css";
+// @import "primeng/resources/themes/mdc-light-indigo/theme.css";
+
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 @import "primeflex/primeflex.scss";
+@import "material-icons/iconfont/material-icons.css";
 
+$errorColor: #e4677e;
 * {
   margin: 0px;
 }
@@ -12,8 +16,14 @@
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   margin-right: auto;
   margin-left: auto;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically if needed */
+  flex-direction: column; /* Optional: to stack children vertically */
 }
 
 @media (min-width: 576px) {
@@ -38,4 +48,26 @@
   .container {
     max-width: 1140px;
   }
+}
+
+.surface-card {
+  @media screen and (min-width: 992px) {
+    .lg\:w-6 {
+      width: 50% !important;
+    }
+  }
+}
+
+.title-case {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+
+.title-case-danger {
+  font-size: 2.5rem;
+  color: $errorColor;
+}
+
+.text-danger {
+  color: $errorColor;
 }

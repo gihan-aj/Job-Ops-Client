@@ -9,6 +9,8 @@
       <ul class="list-none select-none flex-column">
         <li class="pb-2">
           <button
+            title="Dashboard"
+            label="Dashboard"
             pButton
             pRipple
             routerLink="/"
@@ -18,11 +20,12 @@
             (click)="onMenuItemClicked()"
           >
             <i class="pi pi-home mr-2"></i>
-            <span>Dashboard</span>
           </button>
         </li>
         <li class="pb-2" *ngFor="let item of menuItems">
           <button
+            title="{{ item.label }}"
+            label="{{ item.label }}"
             pButton
             pRipple
             routerLink="{{ item.routerLink }}"
@@ -31,7 +34,6 @@
             (click)="onMenuItemClicked()"
           >
             <i class="{{ item.icon }} mr-2"></i>
-            <span>{{ item.label }}</span>
           </button>
         </li>
       </ul>
@@ -42,6 +44,8 @@
       <ul class="list-none select-none flex-column">
         <li class="pb-2">
           <button
+            title="Sign Up"
+            label="Sign Up"
             pButton
             pRipple
             routerLink="/account/register"
@@ -50,11 +54,12 @@
             (click)="onMenuItemClicked()"
           >
             <i class="pi pi-plus mr-2"></i>
-            <span>Sign Up</span>
           </button>
         </li>
         <li class="pb-2">
           <button
+            title="Sign In"
+            label="Sign In"
             pButton
             pRipple
             routerLink="/account/login"
@@ -63,7 +68,6 @@
             (click)="onMenuItemClicked()"
           >
             <i class="pi pi-user mr-2"></i>
-            <span>Sign In</span>
           </button>
         </li>
       </ul>

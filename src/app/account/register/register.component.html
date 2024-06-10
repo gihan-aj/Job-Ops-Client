@@ -1,1 +1,178 @@
-<p>register works!</p>
+<div class="align-content-start px-4 py-4 md:px-6 lg:px-8">
+  <main class="form-signup md:w-29rem">
+    <form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
+      <div class="mb-3">
+        <div class="text-center">
+          <span class="material-icons title-case"> person_add </span>
+        </div>
+
+        <div class="title-case mb-4 text-center font-bold">
+          <span>Sign Up</span>
+        </div>
+
+        <!-- First name -->
+        <div class="flex flex-column gap-2 mb-3">
+          <label for="firstName">First Name</label>
+          <input
+            pInputText
+            formControlName="firstName"
+            type="text"
+            class="form-control"
+            id="firstName"
+            aria-describedby="firstName-help"
+            [class.ng-invalid]="
+              submitted && registerForm.get('firstName')?.errors
+            "
+          />
+          <small id="firstName-help">
+            <span
+              class="text-danger"
+              *ngIf="
+                submitted && registerForm.get('firstName')?.hasError('required')
+              "
+            >
+              First name is required
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="
+                (submitted &&
+                  registerForm.get('firstName')?.hasError('minlength')) ||
+                registerForm.get('firstName')?.hasError('maxlength')
+              "
+            >
+              First name must be at least 3, and maximum 15 characters.
+            </span>
+          </small>
+        </div>
+
+        <!-- Last name -->
+        <div class="flex flex-column gap-2 mb-3">
+          <label for="lastName">Last Name</label>
+          <input
+            pInputText
+            formControlName="lastName"
+            type="text"
+            class="form-control"
+            id="lastName"
+            aria-describedby="lastName-help"
+            [class.ng-invalid]="
+              submitted && registerForm.get('lastName')?.errors
+            "
+          />
+          <small id="lastName-help">
+            <span
+              class="text-danger"
+              *ngIf="
+                submitted && registerForm.get('lastName')?.hasError('required')
+              "
+            >
+              Last name is required
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="
+                (submitted &&
+                  registerForm.get('lastName')?.hasError('minlength')) ||
+                registerForm.get('lastName')?.hasError('maxlength')
+              "
+            >
+              Last name must be at least 3, and maximum 15 characters.
+            </span>
+          </small>
+        </div>
+
+        <!-- Email -->
+        <div class="flex flex-column gap-2 mb-3">
+          <label for="email">Email</label>
+          <input
+            pInputText
+            formControlName="email"
+            type="text"
+            class="form-control"
+            id="email"
+            aria-describedby="email-help"
+            [class.ng-invalid]="submitted && registerForm.get('email')?.errors"
+          />
+          <small id="email-help">
+            <span
+              class="text-danger"
+              *ngIf="
+                submitted && registerForm.get('email')?.hasError('required')
+              "
+            >
+              Email is required
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="
+                submitted && registerForm.get('email')?.hasError('pattern')
+              "
+            >
+              Email is invalid
+            </span>
+          </small>
+        </div>
+
+        <!-- Password -->
+        <div class="flex flex-column gap-2 mb-3">
+          <label for="password">Password</label>
+          <input
+            pInputText
+            formControlName="password"
+            type="password"
+            class="form-control"
+            id="password"
+            aria-describedby="password-help"
+            [class.ng-invalid]="
+              submitted && registerForm.get('password')?.errors
+            "
+          />
+          <small id="password-help">
+            <span
+              class="text-danger"
+              *ngIf="
+                submitted && registerForm.get('password')?.hasError('required')
+              "
+            >
+              Password is required
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="
+                (submitted &&
+                  registerForm.get('password')?.hasError('minlength')) ||
+                registerForm.get('password')?.hasError('maxlength')
+              "
+            >
+              Password must be at least 6, and maximum 15 characters.
+            </span>
+          </small>
+        </div>
+
+        <div
+          class="flex flex-column gap-2 mb-3"
+          *ngIf="errorMessages.length > 0"
+        >
+          <app-validation-messages
+            [errorMessages]="errorMessages"
+          ></app-validation-messages>
+        </div>
+
+        <div class="flex flex-column gap-2 mb-3">
+          <button
+            type="submit"
+            title="Sign Up"
+            pButton
+            pRipple
+            label="Sign Up"
+            icon="pi pi-user"
+            class="w-full"
+            [loading]="loading"
+            [rounded]="true"
+          ></button>
+        </div>
+      </div>
+    </form>
+  </main>
+</div>
