@@ -1,0 +1,81 @@
+<div
+  class="navbar bg-primary flex align-items-center justify-content-between relative lg:static overflow-auto"
+>
+  <div class="pl-3 pr-3">
+    <img class="logo" src="/assets/images/logo.png" alt="logo" />
+  </div>
+
+  <div class="mr-2 ml-2 lg:hidden">
+    <a
+      (click)="onMenuButtonClicked()"
+      class="p-button p-ripple pButton pRipple cursor-pointer block lg:hidden pl-3 pr-3"
+    >
+      <i class="pi pi-bars text-xl"></i>
+    </a>
+  </div>
+
+  <div
+    class="align-items-center flex-grow-1 justify-content-between lg:flex absolute lg:static w-full left-0 top-100 z-1 shadow-2 lg:shadow-none hidden"
+  >
+    <ul
+      class="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row"
+    >
+      <li class="pr-2">
+        <button
+          pButton
+          pRipple
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center border-round"
+        >
+          <i class="pi pi-home mr-2"></i>
+          <span>Dashboard</span>
+        </button>
+      </li>
+      <li class="pr-2" *ngFor="let item of menuItems">
+        <button
+          pButton
+          pRipple
+          routerLink="{{ item.routerLink }}"
+          routerLinkActive="active"
+          class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center border-round"
+        >
+          <i class="{{ item.icon }} mr-2"></i>
+          <span>{{ item.label }}</span>
+        </button>
+      </li>
+    </ul>
+
+    <ul
+      class="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row border-top-1 lg:border-top-none"
+    >
+      <li class="pr-2">
+        <button
+          pButton
+          pRipple
+          routerLink="/account/register"
+          routerLinkActive="active"
+          class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center border-round"
+        >
+          <i class="pi pi-plus mr-2"></i>
+          <span>Sign Up</span>
+        </button>
+      </li>
+      <li class="pr-2">
+        <button
+          pButton
+          pRipple
+          routerLink="/account/login"
+          routerLinkActive="active"
+          class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center border-round"
+        >
+          <i class="pi pi-user mr-2"></i>
+          <span>Sign In</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<app-sidebar [(display)]="displaySideBar" [menuItems]="menuItems"></app-sidebar>
