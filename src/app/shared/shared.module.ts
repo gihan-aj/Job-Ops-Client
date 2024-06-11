@@ -15,6 +15,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TagModule } from 'primeng/tag';
+import { AvatarModule } from 'primeng/avatar';
 
 @NgModule({
   declarations: [NotFoundComponent, ValidationMessagesComponent],
@@ -39,6 +40,7 @@ import { TagModule } from 'primeng/tag';
     FloatLabelModule,
     CheckboxModule,
     TagModule,
+    AvatarModule,
   ],
 })
 export class SharedModule {}

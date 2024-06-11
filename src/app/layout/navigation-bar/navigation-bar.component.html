@@ -51,6 +51,7 @@
 
     <ul
       class="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row border-top-1 lg:border-top-none"
+      *ngIf="(accountService.user$ | async) === null"
     >
       <li class="pr-2">
         <button
@@ -62,7 +63,7 @@
           routerLinkActive="active"
           class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center border-round"
         >
-          <i class="pi pi-plus mr-2"></i>
+          <i class="pi pi-user-plus mr-2"></i>
         </button>
       </li>
       <li class="pr-2">
@@ -76,6 +77,41 @@
           class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center border-round"
         >
           <i class="pi pi-user mr-2"></i>
+        </button>
+      </li>
+    </ul>
+
+    <ul
+      class="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row border-top-1 lg:border-top-none"
+      *ngIf="accountService.user$ | async as user"
+    >
+      <li class="pr-2">
+        <button
+          title="User"
+          label="{{ user.firstName | titlecase }}"
+          pButton
+          pRipple
+          class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center border-round"
+        >
+          <p-avatar
+            icon="pi pi-user"
+            styleClass="mr-2"
+            [style]="{ 'background-color': '#dee9fc', color: '#1a2551' }"
+            shape="circle"
+          />
+        </button>
+      </li>
+
+      <li class="pr-2">
+        <button
+          title="Sign Out"
+          pButton
+          label="Sign Out"
+          pRipple
+          (click)="logout()"
+          class="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center border-round"
+        >
+          <i class="pi pi-user-minus mr-2"></i>
         </button>
       </li>
     </ul>

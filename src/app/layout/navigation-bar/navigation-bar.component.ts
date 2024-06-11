@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MenuItem } from '../../shared/models/core/menu-item';
 import { PrimeNGConfig } from 'primeng/api';
+import { AccountService } from '../../account/account.service';
 
 const _menuItems: MenuItem[] = [
   // {
@@ -56,7 +57,7 @@ export class NavigationBarComponent implements OnInit {
   menuItems: MenuItem[] = [];
   displaySideBar: boolean = false;
 
-  constructor() {}
+  constructor(public accountService: AccountService) {}
 
   ngOnInit(): void {
     this.menuItems = _menuItems;
@@ -64,5 +65,9 @@ export class NavigationBarComponent implements OnInit {
 
   onMenuButtonClicked() {
     this.displaySideBar = true;
+  }
+
+  logout() {
+    this.accountService.logout();
   }
 }

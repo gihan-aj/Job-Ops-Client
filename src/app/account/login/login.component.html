@@ -1,0 +1,106 @@
+<div class="align-content-start px-4 py-4 md:px-6 lg:px-8">
+  <main class="form-signup md:w-29rem">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" autocomplete="off">
+      <div class="mb-3">
+        <div class="text-center">
+          <span class="material-icons title-case"> account_circle </span>
+        </div>
+
+        <div class="title-case mb-4 text-center font-bold">
+          <span>Sign In</span>
+        </div>
+
+        <!-- Email -->
+        <div class="flex flex-column gap-2 mb-3">
+          <label for="userName">Username (your email address)</label>
+          <input
+            pInputText
+            formControlName="userName"
+            type="text"
+            class="form-control"
+            id="userName"
+            aria-describedby="userName-help"
+            [class.ng-invalid]="submitted && loginForm.get('userName')?.errors"
+          />
+          <small id="userName-help">
+            <span
+              class="text-danger"
+              *ngIf="
+                submitted && loginForm.get('userName')?.hasError('required')
+              "
+            >
+              Userame is required
+            </span>
+          </small>
+        </div>
+
+        <!-- Password -->
+        <div class="flex flex-column gap-2 mb-3">
+          <label for="password">Password</label>
+          <input
+            pInputText
+            formControlName="password"
+            type="password"
+            class="form-control"
+            id="password"
+            aria-describedby="password-help"
+            [class.ng-invalid]="submitted && loginForm.get('password')?.errors"
+          />
+          <small id="password-help">
+            <span
+              class="text-danger"
+              *ngIf="
+                submitted && loginForm.get('password')?.hasError('required')
+              "
+            >
+              Password is required
+            </span>
+          </small>
+        </div>
+
+        <div
+          class="flex flex-column gap-2 mb-3"
+          *ngIf="errorMessages.length > 0"
+        >
+          <app-validation-messages
+            [errorMessages]="errorMessages"
+          ></app-validation-messages>
+
+          <p-button
+            *ngIf="errorMessages[0].includes('Please confirm your email.')"
+            label="Click here to resend email confirmation link in case you didn't
+        receive it."
+            [text]="true"
+            severity="info"
+            type="button"
+            (click)="resendEmailConfirmationLink()"
+          />
+        </div>
+
+        <div class="flex flex-column gap-2 mb-3">
+          <button
+            pButton
+            pRipple
+            type="submit"
+            title="Log In"
+            label="Log In"
+            icon="pi pi-sign-in"
+            class="w-full"
+            [loading]="loading"
+            [rounded]="true"
+          ></button>
+        </div>
+      </div>
+    </form>
+    <div class="flex flex-column gap-2 mb-3 text-center">
+      <p-button
+        type="button"
+        label="Forgot username or password?"
+        [text]="true"
+        severity="secondary"
+        [loading]="loading"
+        routerLink="/account/send-email/forgot-username-or-password"
+      ></p-button>
+    </div>
+  </main>
+</div>

@@ -41,7 +41,10 @@
       <div class="mt-3 mb-3">
         <p-divider />
       </div>
-      <ul class="list-none select-none flex-column">
+      <ul
+        class="list-none select-none flex-column"
+        *ngIf="(accountService.user$ | async) === null"
+      >
         <li class="pb-2">
           <button
             title="Sign Up"
@@ -66,6 +69,41 @@
             routerLinkActive="active"
             class="flex align-items-center border-round w-full"
             (click)="onMenuItemClicked()"
+          >
+            <i class="pi pi-user mr-2"></i>
+          </button>
+        </li>
+      </ul>
+
+      <ul
+        class="list-none select-none flex-column"
+        *ngIf="accountService.user$ | async as user"
+      >
+        <li class="pb-2">
+          <button
+            title="User"
+            label="{{ user.firstName | titlecase }}"
+            pButton
+            pRipple
+            class="flex border-round w-full"
+            (click)="onMenuItemClicked()"
+          >
+            <p-avatar
+              icon="pi pi-user"
+              styleClass="mr-2"
+              [style]="{ 'background-color': '#dee9fc', color: '#1a2551' }"
+              shape="circle"
+            />
+          </button>
+        </li>
+        <li class="pb-2">
+          <button
+            title="Sign Out"
+            label="Sign Out"
+            pButton
+            pRipple
+            class="flex align-items-center border-round w-full"
+            (click)="logout()"
           >
             <i class="pi pi-user mr-2"></i>
           </button>
