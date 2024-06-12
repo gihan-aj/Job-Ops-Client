@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
-import { PrimeNGConfig } from 'primeng/api';
 import { HttpService } from './services/http.service';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { NotificationComponent } from './components/widgets/notification/notification.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SharedService {
-  httpService: HttpService;
+  ref: DynamicDialogRef | undefined;
 
-  constructor(private _httpService: HttpService) {
-    this.httpService = _httpService;
+  constructor(private dialogService: DialogService) {}
+
+  showNotification() {
+    this.ref = this.dialogService.open(NotificationComponent, {});
   }
 }

@@ -8,8 +8,13 @@
 @import "material-icons/iconfont/material-icons.css";
 
 $errorColor: #e4677e;
+
 * {
   margin: 0px;
+}
+
+html {
+  font-size: 14px;
 }
 
 .container {
