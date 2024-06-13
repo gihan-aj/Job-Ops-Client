@@ -1,0 +1,15 @@
+<div class="col navigation-card text-center">
+  <span
+    pRipple
+    class="icon-card p-3 shadow-2 mb-3 inline-block bg-primary cursor-pointer"
+    (click)="navigateToPage()"
+  >
+    <i class="pi {{ menuItem.icon }} text-4xl  "></i>
+  </span>
+
+  <div class="text-color-secondary text-xl mb-3 font-medium">
+    {{ menuItem.label }}
+  </div>
+
+  <!-- <span class="text-700 line-height-3">{{menuItem.fragment}}</span> -->
+</div>

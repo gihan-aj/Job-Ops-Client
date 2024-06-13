@@ -20,6 +20,8 @@ import { TagModule } from 'primeng/tag';
 import { AvatarModule } from 'primeng/avatar';
 import { DialogModule } from 'primeng/dialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { authorizationGuard } from './guards/authorization.guard';
+import { IconCardComponent } from './components/widgets/icon-card/icon-card.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
     ValidationMessagesComponent,
     LoadingComponent,
     NotificationComponent,
+    IconCardComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +46,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
     ValidationMessagesComponent,
     LoadingComponent,
     NotificationComponent,
+    IconCardComponent,
     ButtonModule,
     TabMenuModule,
     DividerModule,

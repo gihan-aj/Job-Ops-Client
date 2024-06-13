@@ -13,19 +13,4 @@ import { NotificationService } from '../shared/services/notification.service';
 })
 export class HomeComponent {
   constructor(private notificationServive: NotificationService) {}
-
-  show() {
-    this.notificationServive.showNotification(
-      true,
-      'Account created',
-      'Account has been successfuly created.'
-    );
-  }
-  showError() {
-    this.notificationServive.showNotification(
-      false,
-      'Account created',
-      'Account has been successfuly created.'
-    );
-  }
 }
