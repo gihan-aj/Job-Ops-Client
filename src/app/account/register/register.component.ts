@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AccountService } from '../account.service';
+import { NotificationService } from '../../shared/services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +17,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private formBuilder: FormBuilder
+    private notificationService: NotificationService,
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -65,8 +69,13 @@ export class RegisterComponent implements OnInit {
 
     if (this.registerForm.valid) {
       this.accountService.register(this.registerForm.value).subscribe({
-        next: (response: unknown) => {
-          console.log(response);
+        next: (response: any) => {
+          this.notificationService.showNotification(
+            true,
+            response.value.title,
+            response.value.message
+          );
+          this.router.navigateByUrl('account/login');
           this.loading = false;
         },
         error: (error) => {

@@ -1,0 +1,89 @@
+<div *ngIf="loading" class="mt-4">
+  <app-loading></app-loading>
+</div>
+
+<div *ngIf="!loading" class="align-content-start px-4 py-4 md:px-6 lg:px-8">
+  <main class="form-email md:w-29rem">
+    <form [formGroup]="emailForm" (ngSubmit)="sendEmail()" autocomplete="off">
+      <div>
+        <h1 class="mb-3 text-center">
+          <span *ngIf="mode?.includes('resend-email-confirmation-link')"
+            >Resend email confirmation link</span
+          >
+
+          <span *ngIf="mode?.includes('forgot-username-or-password')"
+            >Retrieve your username or password</span
+          >
+        </h1>
+
+        <!-- Email -->
+        <div class="flex flex-column gap-2 mb-3">
+          <label for="email">Email</label>
+          <input
+            pInputText
+            formControlName="email"
+            type="text"
+            class="form-control"
+            id="email"
+            aria-describedby="email-help"
+            [class.ng-invalid]="submitted && emailForm.get('email')?.errors"
+          />
+          <small id="userName-help">
+            <span
+              class="text-danger"
+              *ngIf="
+                submitted && emailForm.get('userName')?.hasError('required')
+              "
+            >
+              Email is required
+            </span>
+
+            <span
+              class="text-danger"
+              *ngIf="submitted && emailForm.get('email')?.hasError('pattern')"
+            >
+              Email is invalid
+            </span>
+          </small>
+        </div>
+
+        <div
+          class="flex flex-column gap-2 mb-3"
+          *ngIf="errorMessages.length > 0"
+        >
+          <app-validation-messages
+            [errorMessages]="errorMessages"
+          ></app-validation-messages>
+        </div>
+
+        <div class="flex flex-row gap-2 mb-3">
+          <button
+            [loading]="requestLoading"
+            pButton
+            pRipple
+            type="submit"
+            title="Send"
+            label="Send"
+            class="w-full"
+            [loading]="loading"
+            [rounded]="true"
+          ></button>
+
+          <button
+            [loading]="requestLoading"
+            pButton
+            pRipple
+            title="Cancel"
+            type="button"
+            label="Cancel"
+            severity="secondary"
+            class="w-full"
+            [loading]="loading"
+            [rounded]="true"
+            (Click)="cancel()"
+          ></button>
+        </div>
+      </div>
+    </form>
+  </main>
+</div>

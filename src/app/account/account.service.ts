@@ -3,9 +3,11 @@ import { HttpService } from '../shared/services/http.service';
 import { Register } from '../shared/models/account/register';
 import { environment } from '../../environments/environment.development';
 import { User } from '../shared/models/account/user';
-import { Observable, ReplaySubject, map } from 'rxjs';
+import { Observable, ReplaySubject, map, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { Login } from '../shared/models/account/login';
+import { ConfirmEmail } from '../shared/models/account/confirm-email';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -16,10 +18,54 @@ export class AccountService {
 
   constructor(private httpService: HttpService, private router: Router) {}
 
+  refreshUser(jwt: string | null) {
+    if (jwt === null) {
+      this.userSource.next(null);
+      return of(undefined);
+    }
+
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Bearer ' + jwt);
+
+    return this.httpService
+      .get<User>(`${environment.appUrl}/api/account/refresh-user-token`, {
+        headers,
+      })
+      .pipe(
+        map((user: User) => {
+          if (user) {
+            this.setUser(user);
+          }
+        })
+      );
+  }
+
   register(model: Register) {
     return this.httpService.post(
       `${environment.appUrl}/api/account/register`,
       model,
+      {}
+    );
+  }
+
+  confirmEmail(model: ConfirmEmail) {
+    return this.httpService.put(
+      `${environment.appUrl}/api/account/confirm-email`,
+      model,
+      {}
+    );
+  }
+
+  resendEmailConfirmationLink(email: string) {
+    return this.httpService.post(
+      `${environment.appUrl}/api/account/resend-email-confirmation-link/${email}`,
+      {}
+    );
+  }
+
+  forgotUsernameOrPassword(email: string) {
+    return this.httpService.post(
+      `${environment.appUrl}/api/account/forgot-username-or-password/${email}`,
       {}
     );
   }
@@ -41,6 +87,17 @@ export class AccountService {
     this.userSource.next(null);
 
     this.router.navigateByUrl('/');
+  }
+
+  getJwt() {
+    const key = localStorage.getItem(environment.userKey);
+    if (key) {
+      const user: User = JSON.parse(key);
+
+      return user.jwt;
+    } else {
+      return null;
+    }
   }
 
   private setUser(user: User) {

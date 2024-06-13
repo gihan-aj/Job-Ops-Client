@@ -1,1 +1,27 @@
-<p>confirm-email works!</p>
+<div *ngIf="loading" class="mt-4">
+  <app-loading></app-loading>
+</div>
+
+<div *ngIf="!loading" class="mt-4">
+  <div class="text-center" *ngIf="success">
+    <!-- <a routerLink="/account/login" class="p-link">Login</a> -->
+    <p-button
+      severity="success"
+      label="Login"
+      [text]="true"
+      routerLink="/account/login"
+    ></p-button>
+  </div>
+
+  <div class="text-center" *ngIf="!success">
+    <!-- <a (click)="resendEmailConfirmationLink()" class="p-link"
+      >Click here to resend email confirmation link</a
+    > -->
+    <p-button
+      severity="info"
+      label="Click here to resend email confirmation link"
+      [text]="true"
+      (click)="resendEmailConfirmationLink()"
+    ></p-button>
+  </div>
+</div>
