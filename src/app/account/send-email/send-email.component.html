@@ -31,9 +31,7 @@
           <small id="userName-help">
             <span
               class="text-danger"
-              *ngIf="
-                submitted && emailForm.get('userName')?.hasError('required')
-              "
+              *ngIf="submitted && emailForm.get('email')?.hasError('required')"
             >
               Email is required
             </span>

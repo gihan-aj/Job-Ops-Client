@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { Login } from '../shared/models/account/login';
 import { ConfirmEmail } from '../shared/models/account/confirm-email';
 import { HttpHeaders } from '@angular/common/http';
+import { ResetPassword } from '../shared/models/account/reset-password';
 
 @Injectable({
   providedIn: 'root',
@@ -67,6 +68,13 @@ export class AccountService {
     return this.httpService.post(
       `${environment.appUrl}/api/account/forgot-username-or-password/${email}`,
       {}
+    );
+  }
+
+  resetPassword(model: ResetPassword) {
+    return this.httpService.put(
+      `${environment.appUrl}/api/account/reset-password`,
+      model
     );
   }
 
