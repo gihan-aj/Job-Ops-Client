@@ -6,6 +6,7 @@ import { take } from 'rxjs';
 import { User } from '../../shared/models/account/user';
 import { ConfirmEmail } from '../../shared/models/account/confirm-email';
 import { NotificationService } from '../../shared/services/notification.service';
+import { NotificationResponse } from '../../shared/models/core/notification-response';
 
 @Component({
   selector: 'app-confirm-email',
@@ -38,11 +39,11 @@ export class ConfirmEmailComponent implements OnInit {
               };
 
               this.accountService.confirmEmail(confirmEmail).subscribe({
-                next: (response: any) => {
+                next: (response: NotificationResponse) => {
                   this.notificationService.showNotification(
                     true,
-                    response.value.title,
-                    response.value.message
+                    response.title,
+                    response.message
                   );
 
                   this.loading = false;

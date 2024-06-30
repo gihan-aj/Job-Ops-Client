@@ -73,11 +73,11 @@ export class SendEmailComponent implements OnInit {
         this.accountService
           .resendEmailConfirmationLink(this.emailForm.get('email')?.value)
           .subscribe({
-            next: (response: any) => {
+            next: (response) => {
               this.notificationService.showNotification(
                 true,
-                response.value.title,
-                response.value.message
+                response.title,
+                response.message
               );
 
               this.router.navigateByUrl('/account/login');
@@ -99,11 +99,11 @@ export class SendEmailComponent implements OnInit {
         this.accountService
           .forgotUsernameOrPassword(this.emailForm.get('email')?.value)
           .subscribe({
-            next: (response: any) => {
+            next: (response) => {
               this.notificationService.showNotification(
                 true,
-                response.value.title,
-                response.value.message
+                response.title,
+                response.message
               );
               this.router.navigateByUrl('/account/login');
 

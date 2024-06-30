@@ -77,7 +77,6 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   resetPassword() {
-    debugger;
     this.requestLoading = true;
     this.submitted = true;
     this.errorMessages = [];
@@ -90,11 +89,11 @@ export class ResetPasswordComponent implements OnInit {
       };
 
       this.accountService.resetPassword(model).subscribe({
-        next: (response: any) => {
+        next: (response) => {
           this.notificationService.showNotification(
             true,
-            response.value.title,
-            response.value.message
+            response.title,
+            response.message
           );
 
           this.router.navigateByUrl('/account/login');

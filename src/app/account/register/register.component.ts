@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AccountService } from '../account.service';
 import { NotificationService } from '../../shared/services/notification.service';
 import { Router } from '@angular/router';
+import { NotificationResponse } from '../../shared/models/core/notification-response';
 
 @Component({
   selector: 'app-register',
@@ -69,11 +70,11 @@ export class RegisterComponent implements OnInit {
 
     if (this.registerForm.valid) {
       this.accountService.register(this.registerForm.value).subscribe({
-        next: (response: any) => {
+        next: (response: NotificationResponse) => {
           this.notificationService.showNotification(
             true,
-            response.value.title,
-            response.value.message
+            response.title,
+            response.message
           );
           this.router.navigateByUrl('account/login');
           this.loading = false;

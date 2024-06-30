@@ -9,6 +9,7 @@ import { Login } from '../shared/models/account/login';
 import { ConfirmEmail } from '../shared/models/account/confirm-email';
 import { HttpHeaders } from '@angular/common/http';
 import { ResetPassword } from '../shared/models/account/reset-password';
+import { NotificationResponse } from '../shared/models/core/notification-response';
 
 @Injectable({
   providedIn: 'root',
@@ -42,7 +43,7 @@ export class AccountService {
   }
 
   register(model: Register) {
-    return this.httpService.post(
+    return this.httpService.post<NotificationResponse>(
       `${environment.appUrl}/api/account/register`,
       model,
       {}
@@ -50,7 +51,7 @@ export class AccountService {
   }
 
   confirmEmail(model: ConfirmEmail) {
-    return this.httpService.put(
+    return this.httpService.put<NotificationResponse>(
       `${environment.appUrl}/api/account/confirm-email`,
       model,
       {}
@@ -58,21 +59,21 @@ export class AccountService {
   }
 
   resendEmailConfirmationLink(email: string) {
-    return this.httpService.post(
+    return this.httpService.post<NotificationResponse>(
       `${environment.appUrl}/api/account/resend-email-confirmation-link/${email}`,
       {}
     );
   }
 
   forgotUsernameOrPassword(email: string) {
-    return this.httpService.post(
+    return this.httpService.post<NotificationResponse>(
       `${environment.appUrl}/api/account/forgot-username-or-password/${email}`,
       {}
     );
   }
 
   resetPassword(model: ResetPassword) {
-    return this.httpService.put(
+    return this.httpService.put<NotificationResponse>(
       `${environment.appUrl}/api/account/reset-password`,
       model
     );
