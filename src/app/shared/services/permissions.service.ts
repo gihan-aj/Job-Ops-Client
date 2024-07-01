@@ -4,6 +4,7 @@ import { NotificationService } from './notification.service';
 import { Router, RouterStateSnapshot } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { User } from '../models/account/user';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +32,27 @@ export class PermissionsService {
           });
           return false;
         }
+      })
+    );
+  }
+
+  isAdmin(): Observable<boolean> {
+    return this.accountService.user$.pipe(
+      map((user: User | null) => {
+        if (user) {
+          const decodedToken: any = jwtDecode(user.jwt);
+          if (decodedToken.role.includes('Admin')) {
+            return true;
+          }
+        }
+
+        this.notificationService.showNotification(
+          false,
+          'Admin Area',
+          'Only admin can access this area'
+        );
+
+        return false;
       })
     );
   }
