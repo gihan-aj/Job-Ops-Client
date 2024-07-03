@@ -34,9 +34,9 @@ This Angular app is designed to work with the Identity Management App, with the 
   ```
 
 ## Usage
-### ccount Creation and Sign-In
+### Account Creation and Sign-In
 * Navigate to the account creation page to register a new account.
-  ![Alt text]()
+  ![Alt text](https://github.com/gihan-aj/Job-Ops-Client-v2/blob/main/public/favicon.ico)
 * Use the sign-in page to log in with existing credentials.
 
 ### Role-Based Access Control
