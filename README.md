@@ -38,7 +38,7 @@ This Angular app is designed to work with the Identity Management App, with the 
 * Navigate to the account creation page to register a new account.
 ![Alt text](https://github.com/gihan-aj/Job-Ops-Client-v2/blob/main/public/favicon.ico)
 * Use the sign-in page to log in with existing credentials.
-![Alt text](https://github.com/gihan-aj/Job-Ops-Client-v2/blob/main/public/images/logo.png)
+![Alt text](https://github.com/gihan-aj/Job-Ops-Client-v2/blob/main/public/assets/images/logo.png)
 
 ### Role-Based Access Control
 * Guards are implemented to restrict access to certain routes based on user roles.
