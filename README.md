@@ -61,5 +61,5 @@ This Angular app is designed to work with the Identity Management App, with the 
 ![Alt text](https://github.com/gihan-aj/Job-Ops-Client-v2/blob/main/public/assets/images/notification.png "Notification UI")
 
 ### PrimeFlex and PrimeNG
-* [**PrimeFlex:**](primeflex.org) Used for responsive design.
-* [**PrimeNG:**](primeng.org) Used for rich UI components
+* [**PrimeFlex:**](https://primeflex.org) Used for responsive design.
+* [**PrimeNG:**](https://primeng.org) Used for rich UI components
