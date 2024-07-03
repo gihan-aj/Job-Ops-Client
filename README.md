@@ -1,27 +1,63 @@
-# JobOpsClient
+# Job Ops Client App (Angular 18)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
+This Angular app is designed to work with the Identity Management App, with the current functionality focused on account creation and sign-in. It is intended to be extended into a full-fledged job operation management app. The app features role-based access control, modular structure, lazy loading, notification services, and error handling components. It utilizes PrimeFlex CSS library and PrimeNG component library for building user interfaces.
 
-## Development server
+## What I learned
+* **Angular Development:** Improved my skills in building Angular applications with a modular structure.
+* **Role-Based Access Control:** Implemented role-based access control using guards.
+* **Lazy Loading:** Learned how to implement lazy loading to improve application performance.
+* **Notification Services:** Created centralized services for notifications.
+* **Error Handling:** Developed components for centralized error handling.
+* **PrimeFlex and PrimeNG:** Gained experience in using PrimeFlex for responsive design and PrimeNG for rich UI components.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
+* **Account Management:** Functionality for account creation and sign-in.
+* **Role-Based Access Control:** Guards implemented for role-based route access.
+* **Modular Structure:** Different sections are organized into modules.
+* **Lazy Loading:** Modules are loaded on demand to improve performance.
+* **Notification Services:** Centralized services for displaying notifications.
+* **Error Handling:** Components for handling errors across the application.
+* **PrimeFlex and PrimeNG:** Used for responsive design and rich UI components.
 
-## Code scaffolding
+## Installation
+1. Clone the repository
+2. Navigate to the project directory
+3. Install dependencies
+  ```
+  npm install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  ```
+4. Run the application for a dev server.  Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+  ```
+  ng serve
 
-## Build
+  ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
+### ccount Creation and Sign-In
+* Navigate to the account creation page to register a new account.
+  ![Alt text]()
+* Use the sign-in page to log in with existing credentials.
 
-## Running unit tests
+### Role-Based Access Control
+* Guards are implemented to restrict access to certain routes based on user roles.
+* Roles are managed through the Identity Management App.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Modules and Lazy Loading
+* The application is divided into modules for different sections.
+* Lazy loading is implemented to load modules on demand.
 
-## Running end-to-end tests
+### Notification Services
+* Centralized services for displaying notifications across the application.
+* Example Usage
+  ```
+  this.notificationService.showNotification(
+            true,
+            response.title,
+            response.message
+          );
+  ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### PrimeFlex and PrimeNG
+* [**PrimeFlex:**](primeflex.org) Used for responsive design.
+* [**PrimeNG:**](primeng.org) Used for rich UI components
